@@ -40,7 +40,6 @@ class PairSerializer(serializers.ModelSerializer):
     day = DaySerilaizer()
     group = GroupSerilaizer()
     lessons = LessonSerilaizer(many=True)
-    day = DaySerilaizer()
 
     class Meta:
         model = Pair

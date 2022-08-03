@@ -44,6 +44,7 @@ class Teacher(models.Model):
 class Lessons(models.Model):
     subject = models.ForeignKey(Subject, verbose_name='Предмет', on_delete=models.CASCADE, blank=True)
     teacher = models.ForeignKey(Teacher, verbose_name='Имя учителя', on_delete=models.CASCADE, blank=True)
+    cabinet = models.CharField(max_length=5)
 
     def __str__(self):
         return f'{self.subject} - {self.teacher}'
@@ -52,7 +53,6 @@ class Lessons(models.Model):
 class Pair(models.Model):
     day = models.ForeignKey(Day, on_delete=models.CASCADE, blank=True)
     group = models.ForeignKey(Group, on_delete=models.CASCADE, blank=True)
-    cabinet = models.CharField(max_length=5)
     lessons = models.ManyToManyField(Lessons)
 
     def __str__(self):
