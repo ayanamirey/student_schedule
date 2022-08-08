@@ -59,12 +59,9 @@ class TeacherAPIList(generics.ListAPIView):
     """Фильтрация учителей по id"""
 
     def list(self, request, pk, *args, **kwargs):
-        queryset = Timetable.objects.all().filter(pair__teacher=pk)
+        queryset = Timetable.objects.all().filter(pair__teacher_id=pk)
         page = self.paginate_queryset(queryset)
 
-        for i in queryset:
-            # if queryset[i.teat] !=
-            print(i.pair)
 
         if page is not None:
             serializer = self.get_serializer(page, many=True)

@@ -18,3 +18,13 @@ class Timetable(models.Model):
 
     def __str__(self):
         return f'{self.day} - {self.group} группа'
+
+
+class TimetableTeacher(models.Model):
+    day = models.ForeignKey(DayOfTheWeek, on_delete=models.SET_NULL, blank=True, null=True)
+    group = models.ForeignKey(Group, on_delete=models.SET_NULL, blank=True, null=True)
+
+
+    class Meta:
+        verbose_name = 'Расписание учителя'
+        verbose_name_plural = 'Расписания учителей'
